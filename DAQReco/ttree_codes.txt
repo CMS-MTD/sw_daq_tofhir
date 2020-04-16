@@ -1,0 +1,36 @@
+data->Draw("gaus_mean[2]-gaus_mean[0]","gaus_mean[2] > 0 && gaus_mean[0] > 0 && amp[2]> 10 && amp[0]> 10")
+
+
+data->Draw("chTime[133]-chTime[132]","chTime[133] > 0 && chTime[132]> 0")
+
+
+
+data->Draw("gaus_mean[2]-gaus_mean[0]","gaus_mean[2]-gaus_mean[0] > 2 && gaus_mean[2]-gaus_mean[0] < 3 && amp[2]> 10 && amp[0]>10")
+
+
+
+data->Draw("(gaus_mean[2]-1e-12(chTime[136]+chTime[137])/2)","amp[2]> 10 &&  chTime[136] > 0&& chTime[137] > 0")
+
+data->Draw("(gaus_mean[2]-1e-12*(chTime[1]+chTime[15])/2)","amp[2]> 10 &&  chTime[1] > 0&& chTime[15] > 0")
+
+
+
+data->Draw(chTime[384]-chTime[15])*1e-3 - (gaus_mean[8]-gaus_mean[0])", "amp[0]> 10 && SlowTriggerTag> 0")
+
+
+
+data->Draw("( 1e-3*chTime[15]-chTime[384]  - (gaus_mean[2]-IL_10[8])", "amp[2]> 20 && SlowTriggerTag> 0 && (chTime[384]-chTime[15])*1e-3 - (gaus_mean[8]-gaus_mean[2])< 40 && (chTime[384]-chTime[15])*1e-3 - (gaus_mean[8]-gaus_mean[2]) > 0")
+
+
+data->Draw("( 1e-3*chTime[15]-chTime[384]  - (gaus_mean[2]-IL_10[8])", "amp[2]> 20 && SlowTriggerTag> 0 && (chTime[384]-chTime[15])*1e-3 - (gaus_mean[8]-gaus_mean[2])< 40 && (chTime[384]-chTime[15])*1e-3 - (gaus_mean[8]-gaus_mean[2]) > 0")
+
+
+
+data->Draw("(chTime[137]-chTime[384])*1e-3- (gaus_mean[2]-IL_30[8])", "amp[2]> 20 && SlowTriggerTag> 0 && (chTime[137]-chTime[384])*1e-3- (gaus_mean[2]-IL_30[8]) < -50 && (chTime[137]-chTime[384])*1e-3- (gaus_mean[2]-IL_30[8]) > -60")
+
+
+
+hcp time resolution:
+data->Draw("gaus_mean[2]-gaus_mean[0]>>h(100,2.6,2.8","gaus_mean[2]-gaus_mean[0] > 2 && gaus_mean[2]-gaus_mean[0] < 3 && amp[2]> 30 && amp[0]>30")
+
+
