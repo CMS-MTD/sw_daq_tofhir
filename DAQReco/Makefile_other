@@ -1,0 +1,58 @@
+CXX = $(shell root-config --cxx)
+LD = $(shell root-config --ld)
+INC = $(shell pwd)
+Repo = $(shell git rev-parse --show-toplevel)
+#SRC = $(Repo)/src
+#SRC_s= $(Repo)/src
+
+CPPFLAGS := $(shell root-config --cflags) -I$(INC)/include
+LDFLAGS := $(shell root-config --glibs)
+CPPFLAGS += -g -std=c++1y
+
+TARGET = ConvertTOFPETSinglesToEvents
+SRC = ConvertTOFPETSinglesToEvents.cc
+OBJ = $(SRC:.cc=.o)
+
+fast = CheckFast
+SRC_f = CheckFast.cc
+OBJ_f = $(SRC_f:.cc=.o)
+
+slow = CheckSlow
+SRC_s = CheckSlow.cc
+OBJ_s = $(SRC_s:.cc=.o)
+
+
+tofhir = CheckTofhir
+SRC_t = CheckTofhir.cc
+OBJ_t = $(SRC_t:.cc=.o)
+
+
+
+
+
+all : $(TARGET) $(fast) $(slow ) $(tofhir)
+
+$bbb(TARGET) : $(OBJ)
+	@echo $@
+	$(LD) $(CPPFLAGS) -o $(TARGET) $(OBJ) $(LDFLAGS)
+
+$(fast) : $(OBJ_f)
+	@echo $@
+	$(LD) $(CPPFLAGS) -o $(fast) $(OBJ_f) $(LDFLAGS)
+
+$(slow) : $(OBJ_s)
+	@echo $@
+	$(LD) $(CPPFLAGS) -o $(slow) $(OBJ_s) $(LDFLAGS)
+
+$(tofhir) : $(OBJ_t)
+	@echo $@
+	$(LD) $(CPPFLAGS) -o $(tofhir) $(OBJ_t) $(LDFLAGS)
+
+
+
+
+%.o : %.cc
+	@echo $@
+	$(CXX) $(CPPFLAGS) -o $@ -c $<
+clean :
+	rm -f *.o $(TARGET)  $(TARGET_slow) *~

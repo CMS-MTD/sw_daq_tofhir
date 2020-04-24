@@ -13,24 +13,12 @@ SRC = ConvertTOFPETSinglesToEvents.cc
 OBJ = $(SRC:.cc=.o)
 head= Tofhir.h
 
-TARGETvme =  ConvertTOFPETSinglesToEventsWithVME
-SRCvme = ConvertTOFPETSinglesToEventsWithVME.cc
-OBJvme = $(SRCvme:.cc=.o)
 
+all : $(TARGET)
 
-
-#all : $(TARGET) $(TARGETvme)
-all :  $(TARGET) $(TARGETvme)
-
-
-#$(TARGET) : $(OBJ)
-#	@echo $@
-#	$(LD) $(CPPFLAGS) -o $(TARGET) $(OBJ) $(head) $(LDFLAGS) 
-
-
-$(TARGETvme) : $(OBJvme)
+$(TARGET) : $(OBJ)
 	@echo $@
-	$(LD) $(CPPFLAGS) -o $(TARGETvme) $(OBJvme) $(head) $(LDFLAGS)
+	$(LD) $(CPPFLAGS) -o $(TARGET) $(OBJ) $(head) $(LDFLAGS) 
 
 
 
@@ -38,4 +26,4 @@ $(TARGETvme) : $(OBJvme)
 	@echo $@
 	$(CXX) $(CPPFLAGS) -o $@ -c $<
 clean :
-	rm -f *.o $(TARGET) $(TARGETvme) *~
+	rm -f *.o $(TARGET) *~
